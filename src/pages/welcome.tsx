@@ -7,6 +7,8 @@ import { queryAllCharacters } from '../services/queries';
 const Welcome: React.FC = () => {
   // TODO: Enforce types and format function output
   const { isLoading, data } = queryAllCharacters();
+  // eslint-disable-next-line no-console
+  console.log('res', isLoading, data);
 
   return (
     <Layout>
@@ -18,7 +20,7 @@ const Welcome: React.FC = () => {
 
         <div className="content">
           <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-            {data?.data?.results.slice(0, 6).map((item: any) => (
+            {data?.results.slice(0, 6).map((item: any) => (
               <Character key={item.id} name={item.name} />
             ))}
           </Grid>

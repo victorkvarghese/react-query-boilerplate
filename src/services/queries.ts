@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import { useQuery } from 'react-query';
 import { ApiRequestService } from './api-service';
 
@@ -10,5 +11,9 @@ import { ApiRequestService } from './api-service';
  */
 export const queryAllCharacters = () => {
   const apiRequestService = ApiRequestService.createInstance();
-  return useQuery('fetchCharacters', apiRequestService.fetchCharacters);
+  return useQuery('fetchCharacters', async () => {
+    // done to avoid data.data nesting in container
+    const res: AxiosResponse = await apiRequestService.fetchCharacters();
+    return res.data;
+  });
 };
