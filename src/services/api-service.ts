@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { IAddPost } from '../models/common/post';
 import { apiClient } from './clients/api-client';
 
 export class ApiRequestService {
@@ -21,4 +22,6 @@ export class ApiRequestService {
   }
 
   fetchPosts = () => apiClient.get(`/posts`);
+
+  addPost = (data: IAddPost) => apiClient.post('/posts', data);
 }

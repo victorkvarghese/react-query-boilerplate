@@ -2,37 +2,50 @@ import { Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/images/logo.svg';
+import { IAddPost } from '../models/common/post';
+import { addNewPostMutation } from '../services/mutations';
 import { ChakraDrawer } from './Drawer';
 
-export const Header: React.FC = () => (
-  <Container>
-    <div className="logo-view">
-      <NavLink to="/">
-        <img src={logo} className="app-logo" alt="logo" />
+export const Header: React.FC = () => {
+  const newPostMutation = addNewPostMutation();
+
+  const onCreatePost = (data: IAddPost) => {
+    newPostMutation.mutate(data);
+  };
+
+  // eslint-disable-next-line no-console
+  console.log('Rendering Header', newPostMutation.isLoading, newPostMutation.isError);
+
+  return (
+    <Container>
+      <div className="logo-view">
+        <NavLink to="/">
+          <img src={logo} className="app-logo" alt="logo" />
+        </NavLink>
+      </div>
+
+      <NavLink to="/" activeClassName="active-link">
+        <Button className="btn" variant="ghost">
+          Home
+        </Button>
       </NavLink>
-    </div>
 
-    <NavLink to="/" activeClassName="active-link">
-      <Button className="btn" variant="ghost">
-        Home
-      </Button>
-    </NavLink>
+      <NavLink to="/docs" activeClassName="active-link">
+        <Button className="btn" variant="ghost">
+          Docs
+        </Button>
+      </NavLink>
 
-    <NavLink to="/docs" activeClassName="active-link">
-      <Button className="btn" variant="ghost">
-        Docs
-      </Button>
-    </NavLink>
+      <NavLink to="/about" activeClassName="active-link">
+        <Button className="btn" variant="ghost">
+          About
+        </Button>
+      </NavLink>
 
-    <NavLink to="/about" activeClassName="active-link">
-      <Button className="btn" variant="ghost">
-        About
-      </Button>
-    </NavLink>
-
-    <ChakraDrawer />
-  </Container>
-);
+      <ChakraDrawer onSubmit={onCreatePost} />
+    </Container>
+  );
+};
 
 const Container = styled.div`
   display: flex;

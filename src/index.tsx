@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { QueryClientProvider } from 'react-query';
+import { AppQueryClient } from './services/clients/query-client';
 
-import { QueryClient, QueryClientProvider } from 'react-query';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { ChakraAppTheme } from './assets/theme/chakra-theme';
@@ -12,11 +13,9 @@ import Welcome from './pages/welcome';
 import Docs from './pages/docs';
 import About from './pages/about';
 
-const queryClient = new QueryClient();
-
 ReactDOM.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={AppQueryClient}>
       <ChakraProvider theme={ChakraAppTheme}>
         <Router>
           <Switch>

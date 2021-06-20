@@ -11,7 +11,7 @@ import { ApiRequestService } from './api-service';
  */
 export const queryAllPosts = () => {
   const apiRequestService = ApiRequestService.createInstance();
-  return useQuery('fetchCharacters', async () => {
+  return useQuery('fetchPosts', async () => {
     // done to avoid data.data nesting in container
     const res: AxiosResponse = await apiRequestService.fetchPosts();
     return res.data;

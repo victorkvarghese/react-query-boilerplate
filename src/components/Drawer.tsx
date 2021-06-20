@@ -20,10 +20,21 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
+import { IAddPost } from '../models/common/post';
 
-export const ChakraDrawer: React.FC = (props) => {
+interface IProps {
+  onSubmit: (data: IAddPost) => void;
+}
+
+export const ChakraDrawer: React.FC<IProps> = (props) => {
+  const { onSubmit } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = useRef(null);
+
+  const onPress = () => {
+    onSubmit({ title: 'Do Laundry', body: 'Hello', userId: 1 });
+    onClose();
+  };
 
   return (
     <>
@@ -71,7 +82,9 @@ export const ChakraDrawer: React.FC = (props) => {
             <Button variant="outline" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme="blue">Create</Button>
+            <Button colorScheme="blue" onClick={onPress}>
+              Create
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
