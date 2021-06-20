@@ -9,7 +9,6 @@ import './index.css';
 import { ChakraAppTheme } from './assets/theme/chakra-theme';
 
 import Welcome from './pages/welcome';
-import HelpUs from './pages/help-us';
 import Docs from './pages/docs';
 import About from './pages/about';
 
@@ -21,7 +20,6 @@ ReactDOM.render(
       <ChakraProvider theme={ChakraAppTheme}>
         <Router>
           <Switch>
-            <Route path="/help" component={HelpUs} />
             <Route path="/docs" component={Docs} />
             <Route path="/about" component={About} />
             <Route exact path="/" component={Welcome} />

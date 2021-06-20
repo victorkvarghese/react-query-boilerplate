@@ -5,10 +5,7 @@ import { Layout } from '../components/Layout';
 import { queryAllCharacters } from '../services/queries';
 
 const Welcome: React.FC = () => {
-  // TODO: Enforce types and format function output
   const { isLoading, data } = queryAllCharacters();
-  // eslint-disable-next-line no-console
-  console.log('res', isLoading, data);
 
   return (
     <Layout>
