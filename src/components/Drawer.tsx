@@ -34,13 +34,13 @@ export const ChakraDrawer: React.FC = (props) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="1px">Create a new character</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">Create a new post</DrawerHeader>
 
           <DrawerBody>
             <Stack spacing="24px">
               <Box>
-                <FormLabel htmlFor="username">Name</FormLabel>
-                <Input ref={firstField} id="username" placeholder="Please enter user name" />
+                <FormLabel htmlFor="username">Title</FormLabel>
+                <Input ref={firstField} id="username" placeholder="Please enter title" />
               </Box>
 
               <Box>
@@ -53,10 +53,10 @@ export const ChakraDrawer: React.FC = (props) => {
               </Box>
 
               <Box>
-                <FormLabel htmlFor="owner">Select Gender</FormLabel>
+                <FormLabel htmlFor="owner">Select Category</FormLabel>
                 <Select id="owner" defaultValue="segun">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="male">Automobile</option>
+                  <option value="female">Sports</option>
                 </Select>
               </Box>
 

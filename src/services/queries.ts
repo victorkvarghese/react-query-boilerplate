@@ -9,11 +9,11 @@ import { ApiRequestService } from './api-service';
  * Caching handled by react query
  * TODO: Enforce strong typing
  */
-export const queryAllCharacters = () => {
+export const queryAllPosts = () => {
   const apiRequestService = ApiRequestService.createInstance();
   return useQuery('fetchCharacters', async () => {
     // done to avoid data.data nesting in container
-    const res: AxiosResponse = await apiRequestService.fetchCharacters();
+    const res: AxiosResponse = await apiRequestService.fetchPosts();
     return res.data;
   });
 };

@@ -20,5 +20,5 @@ export class ApiRequestService {
     return ApiRequestService.createInstance();
   }
 
-  fetchCharacters = () => apiClient.get(`/character`);
+  fetchPosts = () => apiClient.get(`/posts`);
 }

@@ -1,7 +1,7 @@
 interface IProps {
   name: string;
 }
-export const Character: React.FC<IProps> = (props) => (
+export const Post: React.FC<IProps> = (props) => (
   <div
     style={{
       width: '100%',
@@ -19,5 +19,3 @@ export const Character: React.FC<IProps> = (props) => (
     {props.name}
   </div>
 );
-
-export default Character;

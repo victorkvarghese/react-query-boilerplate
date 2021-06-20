@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { Grid, Progress } from '@chakra-ui/react';
-import { Character } from '../components/Character';
+import { Post } from '../components/Post';
 import { Layout } from '../components/Layout';
-import { queryAllCharacters } from '../services/queries';
+import { queryAllPosts } from '../services/queries';
 
 const Welcome: React.FC = () => {
-  const { isLoading, data } = queryAllCharacters();
+  const { isLoading, data } = queryAllPosts();
 
   return (
     <Layout>
@@ -17,8 +17,8 @@ const Welcome: React.FC = () => {
 
         <div className="content">
           <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-            {data?.results.slice(0, 6).map((item: any) => (
-              <Character key={item.id} name={item.name} />
+            {data?.slice(0, 6).map((item: any) => (
+              <Post key={item.id} name={item.title} />
             ))}
           </Grid>
         </div>
